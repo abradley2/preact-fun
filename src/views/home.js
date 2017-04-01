@@ -19,7 +19,7 @@ function home (props) {
   const dispatch = props.dispatch
   const state = props.state
 
-  return <div>
+  return <div className='center measure'>
     <h3>{state.home.message}</h3>
     <input
       type='text'
