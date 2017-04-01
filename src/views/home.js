@@ -8,9 +8,9 @@ const model = {
       message: 'Hello World!'
     }
   },
-  editMessage: function (state, payload) {
-    return {
-      message: payload.message
+  message: {
+    edit: function (state, payload) {
+      return payload.message
     }
   }
 }
@@ -24,11 +24,18 @@ function home (props) {
     <input
       type='text'
       value={state.home.message}
-      oninput={function (e) {
-        dispatch('home:editMessage', {message: e.target.value})
-      }}
+      oninput={editMessage}
     />
   </div>
+
+  function editMessage (e) {
+    dispatch({
+      type: 'edit home.message',
+      payload: {
+        message: e.target.value
+      }
+    })
+  }
 }
 
 module.exports = {

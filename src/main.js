@@ -1,6 +1,7 @@
 /** @jsx h */
 const h = require('preact').h
 const render = require('preact').render
+const Component = require('preact').Component
 const Socrates = require('socrates')
 const Router = require('preact-router')
 
@@ -16,11 +17,24 @@ function HomeRoute (props) {
   </div>
 }
 
-// map routes
-function Main (state, dispatch) {
-  return <Router>
-    <HomeRoute path='/' state={state} dispatch={dispatch} />
-  </Router>
+// map routes to the App's render function
+function App (props) {
+  Component.call(this, props)
+  this.state = this.props.store()
+
+  this.render = function () {
+    return <Router>
+      <HomeRoute path='/' state={this.props.store()} dispatch={this.props.store} />
+    </Router>
+  }
+}
+
+App.prototype = Object.create(Component.prototype)
+
+App.prototype.componentWillMount = function () {
+  this.props.store.subscribe(function (newState) {
+    this.setState(newState)
+  }.bind(this))
 }
 
 // convenience function. Adds a view's moodel to the store if it has one.
@@ -40,4 +54,4 @@ Object.keys(storeConfig).forEach(function (namespace) {
 })
 
 // have router resolve and start app
-render(Main(store(), store), document.getElementById('app'))
+render(<App store={store} />, document.getElementById('app'))
