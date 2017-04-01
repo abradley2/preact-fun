@@ -1,0 +1,41 @@
+{
+  "scripts": {
+    "build": "NODE_ENV=production browserify ./src/main.js -g uglifyify -o ./public/main.bundle.js",
+    "watch": "NODE_ENV=development budo ./src/main.js:main.bundle.js --live --dir ./public",
+    "test": "standard --fix && ava",
+    "lint": "standard --fix"
+  },
+  "browserify": {
+    "transform": [
+      "envify",
+      "babelify"
+    ]
+  },
+  "standard": {
+    "ignore": [
+      "main.bundle.js"
+    ]
+  },
+  "dependencies": {
+    "aphrodite": "^1.2.0",
+    "preact": "^7.2.1",
+    "preact-router": "^2.4.1",
+    "reselect": "^3.0.0",
+    "socrates": "^4.0.2",
+    "xhr": "^2.4.0"
+  },
+  "devDependencies": {
+    "ava": "^0.18.2",
+    "babel": "^6.23.0",
+    "babel-preset-react": "^6.23.0",
+    "babelify": "^7.3.0",
+    "browserify": "^14.1.0",
+    "budo": "^9.4.7",
+    "cssauron-html": "^1.0.0",
+    "envify": "^4.0.0",
+    "flow-bin": "^0.42.0",
+    "standard": "^9.0.2",
+    "uglifyify": "^3.0.4",
+    "undom": "^0.3.3"
+  }
+}
