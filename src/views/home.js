@@ -10,7 +10,7 @@ const model = {
   },
   message: {
     edit: function (state, payload) {
-      return payload.message
+      return payload
     }
   }
 }
@@ -31,9 +31,7 @@ function home (props) {
   function editMessage (e) {
     dispatch({
       type: 'edit home.message',
-      payload: {
-        message: e.target.value
-      }
+      payload: e.target.value
     })
   }
 }
