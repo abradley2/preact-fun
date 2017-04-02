@@ -3,7 +3,7 @@ const layout = {
   init: function () {
     return {
       showingDrawer: false,
-      showingBottomSheet: false
+      showingBottomSheet: true
     }
   },
   showingDrawer: {
