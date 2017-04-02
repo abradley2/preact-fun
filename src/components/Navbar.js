@@ -4,12 +4,10 @@ const StyleSheet = require('aphrodite').StyleSheet
 const css = require('aphrodite').css
 const colors = require('../styles/colors')
 
-const drawerWidth = '250px'
-
 const styles = StyleSheet.create({
   navbar: {
     transition: '1s',
-    marginLeft: '-' + drawerWidth,
+    marginLeft: '-255px',
     backgroundColor: colors.red,
     boxShadow: '2px 2px 4px 2px rgba( 0, 0, 0, 0.2 )',
     height: '4rem'
@@ -18,13 +16,13 @@ const styles = StyleSheet.create({
     marginLeft: '0px'
   },
   drawerWrapper: {
-    width: drawerWidth
+    width: '250px'
   },
   drawer: {
     position: 'fixed',
     top: '0',
     bottom: '0',
-    width: drawerWidth,
+    width: '250px',
     backgroundColor: 'white',
     boxShadow: '2px 2px 4px 2px rgba( 0, 0, 0, 0.2 )'
   }
