@@ -1,5 +1,6 @@
 /** @jsx h */
 const h = require('preact').h
+const Navbar = require('../components/Navbar')
 
 const model = {
   namespace: 'home',
@@ -19,13 +20,16 @@ function home (props) {
   const dispatch = props.dispatch
   const state = props.state
 
-  return <div className='center measure'>
-    <h3>{state.home.message}</h3>
-    <input
-      type='text'
-      value={state.home.message}
-      oninput={editMessage}
-    />
+  return <div>
+    <Navbar />
+    <div className='center measure'>
+      <h3>{state.home.message}</h3>
+      <input
+        type='text'
+        value={state.home.message}
+        oninput={editMessage}
+      />
+    </div>
   </div>
 
   function editMessage (e) {

@@ -5,10 +5,12 @@ const Component = require('preact').Component
 const Socrates = require('socrates')
 const Router = require('preact-router')
 
-const storeConfig = {}
+const models = {
+  layout: require('./models/layout')
+}
 
 // require views
-const Home = initView(require('./views/home'))
+const Home = initView(require('./views/Home'))
 
 // declare routes
 function HomeRoute (props) {
@@ -41,15 +43,15 @@ App.prototype.componentWillMount = function () {
 // returns just the "render" function of the view
 function initView (view) {
   if (view.model) {
-    storeConfig[view.model.namespace] = view.model
+    models[view.model.namespace] = view.model
   }
   return view.view
 }
 
 // create the store an initialize the model of each
-const store = Socrates(storeConfig)
+const store = Socrates(models)
 
-Object.keys(storeConfig).forEach(function (namespace) {
+Object.keys(models).forEach(function (namespace) {
   store({type: 'init:' + namespace})
 })
 

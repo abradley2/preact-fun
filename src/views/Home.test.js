@@ -1,12 +1,12 @@
 const test = require('ava').test
 const {h, render} = require('preact')
 const {find} = require('../utils/test-utils')
-const home = require('./home')
+const Home = require('./Home')
 
 // initialize a fresh store before each test
 test.beforeEach(function (t) {
   t.context.store = require('socrates')({
-    home: home.model
+    home: Home.model
   })
   t.context.store({type: 'init:home'})
 })
@@ -14,7 +14,7 @@ test.beforeEach(function (t) {
 test('home view', function (t) {
   const store = t.context.store
   render(
-    h(home.view, {state: store(), dispatch: store}),
+    h(Home.view, {state: store(), dispatch: store}),
     document.body
   )
 
