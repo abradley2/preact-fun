@@ -3,6 +3,7 @@ const h = require('preact').h
 const Navbar = require('../components/Navbar')
 const FloatingAction = require('../components/FloatingAction')
 const BottomSheet = require('../components/BottomSheet')
+const CreateTodoForm = require('../components/CreateTodoForm')
 
 const model = {
   namespace: 'home',
@@ -45,7 +46,7 @@ function home (props) {
           }
         </div>
         <BottomSheet state={props.state} dispatch={props.dispatch}>
-          <h3>Some Content</h3>
+          <CreateTodoForm state={props.state} dispatch={props.dispatch} />
         </BottomSheet>
       </div>
     </div>

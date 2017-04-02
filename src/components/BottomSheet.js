@@ -8,13 +8,13 @@ const styles = StyleSheet.create({
     transition: '1s',
     backgroundColor: 'white',
     height: '250px',
-    marginBottom: '-255px',
+    margin: '0px 0px -255px 0px',
     float: 'right',
     width: '100%',
     boxShadow: '2px 2px 4px 2px rgba( 0, 0, 0, 0.2 )'
   },
   bottomSheetShow: {
-    marginBottom: '0px'
+    margin: '-50px 0px 0px 0px'
   }
 })
 
@@ -27,7 +27,7 @@ function BottomSheet (props) {
   )
 
   return <div className={bottomSheetClass}>
-    <h3>Hello!</h3>
+    {props.children}
   </div>
 }
 
