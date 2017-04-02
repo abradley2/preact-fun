@@ -1,14 +1,5 @@
 /** @jsx h */
 const h = require('preact').h
-const StyleSheet = require('aphrodite').StyleSheet
-const css = require('aphrodite').css
-
-const styles = StyleSheet.create({
-  dtc: {
-    display: 'table-cell',
-    verticalAlign: 'middle'
-  }
-})
 
 function FloatingAction (props) {
   return <div
@@ -17,8 +8,7 @@ function FloatingAction (props) {
   >
     <i
       className={
-        css(styles.dtc) +
-        ' shadow-2 br-100 h3 w3 bg-red white fa fa-3x ' +
+        'fa fa-3x dtc v-mid shadow-2 br-100 h3 w3 bg-red white ' +
         (props.iconClass || 'fa-plus')
       } />
   </div>

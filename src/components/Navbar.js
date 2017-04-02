@@ -5,6 +5,9 @@ const css = require('aphrodite').css
 const colors = require('../styles/colors')
 
 const styles = StyleSheet.create({
+  transition: {
+    transition: '1s'
+  },
   navbar: {
     transition: '1s',
     marginLeft: '-255px',
@@ -20,6 +23,7 @@ const styles = StyleSheet.create({
   },
   drawer: {
     position: 'fixed',
+    zIndex: 1,
     top: '0',
     bottom: '0',
     width: '250px',
@@ -30,6 +34,7 @@ const styles = StyleSheet.create({
 
 function topBar (props) {
   const dispatch = props.dispatch
+  const layoutState = props.state.layout
 
   return <div className='pl3'>
     <div className='flex'>
@@ -38,7 +43,10 @@ function topBar (props) {
         onclick={toggleShowingDrawer}
       >
         <div className='h3 dtc v-mid white'>
-          <span className='fa fa-3x fa-bars' />
+          {layoutState.showingDrawer
+            ? <span className='transition fa fa-3x fa-bars rotate-90' />
+            : <span className='transition fa fa-3x fa-bars' />
+          }
         </div>
       </div>
     </div>

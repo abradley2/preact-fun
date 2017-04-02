@@ -23,7 +23,7 @@ function home (props) {
 
   return <div>
     <Navbar state={props.state} dispatch={props.dispatch} />
-    <div className='center measure ph2'>
+    <div className='relative center measure ph2'>
       <h3>{state.home.message}</h3>
       <input
         type='text'
@@ -31,7 +31,14 @@ function home (props) {
         oninput={editMessage}
       />
       <div className='fixed bottom-1 right-1'>
-        <FloatingAction />
+        <div className='flex flex-column'>
+          <div class='mb2'>
+            <FloatingAction iconClass='fa-wrench' />
+          </div>
+          <div class='mb2'>
+            <FloatingAction iconClass='fa-plus' />
+          </div>
+        </div>
       </div>
     </div>
   </div>
