@@ -30,14 +30,12 @@ function home (props) {
         value={state.home.message}
         oninput={editMessage}
       />
-      <div className='fixed bottom-1 right-1'>
-        <div className='flex flex-column'>
-          <div class='mb2'>
-            <FloatingAction iconClass='fa-wrench' />
-          </div>
-          <div class='mb2'>
-            <FloatingAction iconClass='fa-plus' />
-          </div>
+      <div className='fixed z-2 bottom-0 right-1'>
+        <div className='mb3'>
+          <FloatingAction iconClass='fa-wrench' />
+        </div>
+        <div className='mb3'>
+          <FloatingAction iconClass='fa-plus' />
         </div>
       </div>
     </div>
