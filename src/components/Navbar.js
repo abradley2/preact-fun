@@ -35,7 +35,7 @@ function topBar (props) {
 
   return <div className='pl3'>
     <div className='flex'>
-      <div 
+      <div
         className='dt pointer'
         onclick={toggleShowingDrawer}
       >
@@ -51,7 +51,7 @@ function topBar (props) {
   }
 }
 
-function drawer () {
+function drawer (props) {
   return <div className={css(styles.drawerWrapper)}>
     <div className={css(styles.drawer)}>
       <span>I am a drawer</span>

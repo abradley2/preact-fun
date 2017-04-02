@@ -50,6 +50,12 @@ function initView (view) {
 
 // create the store an initialize the model of each
 const store = Socrates(models)
+const props = {
+  store: store,
+  dispatch: function (action) {
+    if (typeof action === 'function') return action(store)
+  }
+}
 
 Object.keys(models).forEach(function (namespace) {
   store({type: 'init:' + namespace})
