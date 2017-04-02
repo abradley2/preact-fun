@@ -6,9 +6,11 @@ const Home = require('./Home')
 // initialize a fresh store before each test
 test.beforeEach(function (t) {
   t.context.store = require('socrates')({
+    layout: require('../models/layout'),
     home: Home.model
   })
   t.context.store({type: 'init:home'})
+  t.context.store({type: 'init:layout'})
 })
 
 test('home view', function (t) {
@@ -20,7 +22,5 @@ test('home view', function (t) {
 
   const results = find('input', document.body)
 
-  console.log(results[0])
-
-  t.pass()
+  t.pass(results[0])
 })

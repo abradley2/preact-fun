@@ -26,7 +26,7 @@ function App (props) {
 
   this.render = function () {
     return <Router>
-      <HomeRoute path='/' state={this.props.store()} dispatch={this.props.store} />
+      <HomeRoute path='/' state={this.props.store()} dispatch={this.props.dispatch} />
     </Router>
   }
 }
@@ -50,16 +50,19 @@ function initView (view) {
 
 // create the store an initialize the model of each
 const store = Socrates(models)
-const props = {
-  store: store,
-  dispatch: function (action) {
-    if (typeof action === 'function') return action(store)
-  }
-}
 
 Object.keys(models).forEach(function (namespace) {
   store({type: 'init:' + namespace})
 })
 
 // have router resolve and start app
-render(<App store={store} />, document.getElementById('app'))
+render(
+  <App
+    store={store}
+    dispatch={function (action) {
+      if (typeof action === 'function') return action(store)
+      return store(action)
+    }}
+  />,
+  document.getElementById('app')
+)

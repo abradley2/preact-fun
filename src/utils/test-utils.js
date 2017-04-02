@@ -38,6 +38,12 @@ function find (queries, dom) {
   return selectors.map(s => s.found)
 }
 
+// need to NoOp aprhodite
+Object.assign(require('aphrodite'), {
+  StyleSheet: {create: function () { return {} }},
+  css: function () { return '' }
+})
+
 module.exports = {
   getSelector,
   find

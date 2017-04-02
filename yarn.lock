@@ -273,7 +273,7 @@ arrify@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
 
-asap@^2.0.3:
+asap@^2.0.3, asap@~2.0.3:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/asap/-/asap-2.0.5.tgz#522765b50c3510490e52d7dcfe085ef9ba96958f"
 
@@ -1352,6 +1352,10 @@ common-path-prefix@^1.0.0:
 commondir@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
+
+component-type@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/component-type/-/component-type-1.1.0.tgz#95b666aad53e5c8d1f2be135c45b5d499197c0c5"
 
 concat-map@0.0.1:
   version "0.0.1"
@@ -2472,6 +2476,12 @@ iconv-lite@0.4.13:
   version "0.4.13"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.13.tgz#1f88aba4ab0b1508e8312acc39345f36e992e2f2"
 
+idb-range@^3.0.0:
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/idb-range/-/idb-range-3.1.3.tgz#fa15a8baeeb3056d5ebed7c76acf4f92e96438e2"
+  dependencies:
+    is-plain-obj "^1.1.0"
+
 ieee754@^1.1.4:
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.1.8.tgz#be33d40ac10ef1926701f6f08a2d86fbfd1ad3e4"
@@ -2726,7 +2736,7 @@ is-path-inside@^1.0.0:
   dependencies:
     path-is-inside "^1.0.1"
 
-is-plain-obj@^1.0.0:
+is-plain-obj@^1.0.0, is-plain-obj@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/is-plain-obj/-/is-plain-obj-1.1.0.tgz#71a50c8429dfca773c92a390a4a03b39fcd51d3e"
 
@@ -3704,6 +3714,12 @@ progress@^1.1.8:
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/progress/-/progress-1.1.8.tgz#e260c78f6161cdd9b0e56cc3e0a85de17c7a57be"
 
+promise@^7.0.4:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/promise/-/promise-7.1.1.tgz#489654c692616b8aa55b0724fa809bb7db49c5bf"
+  dependencies:
+    asap "~2.0.3"
+
 pseudomap@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/pseudomap/-/pseudomap-1.0.2.tgz#f052a28da70e618917ef0a8ac34c1ae5a68286b3"
@@ -4546,6 +4562,14 @@ tough-cookie@~2.3.0:
   resolved "https://registry.yarnpkg.com/tough-cookie/-/tough-cookie-2.3.2.tgz#f081f76e4c85720e6c37a5faced737150d84072a"
   dependencies:
     punycode "^1.4.1"
+
+treo@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/treo/-/treo-0.5.1.tgz#e90427889fbf991f2e01468c71cfa8013dcd362b"
+  dependencies:
+    component-type "1.1.0"
+    idb-range "^3.0.0"
+    promise "^7.0.4"
 
 trim-newlines@^1.0.0:
   version "1.0.0"

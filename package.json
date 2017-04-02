@@ -29,6 +29,7 @@
     "preact-router": "^2.4.1",
     "reselect": "^3.0.0",
     "socrates": "^4.0.2",
+    "treo": "^0.5.1",
     "xhr": "^2.4.0"
   },
   "devDependencies": {
