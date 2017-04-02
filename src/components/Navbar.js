@@ -7,6 +7,13 @@ const colors = require('../styles/colors')
 const drawerWidth = '250px'
 
 const styles = StyleSheet.create({
+  navbar: {
+    transition: '1s',
+    marginLeft: '-' + drawerWidth,
+    backgroundColor: colors.coral,
+    boxShadow: '2px 2px 4px 2px rgba( 0, 0, 0, 0.2 )',
+    height: '4rem'
+  },
   navbarShow: {
     marginLeft: '0px'
   },
@@ -20,24 +27,28 @@ const styles = StyleSheet.create({
     width: drawerWidth,
     backgroundColor: 'white',
     boxShadow: '2px 2px 4px 2px rgba( 0, 0, 0, 0.2 )'
-  },
-  navbar: {
-    backgroundColor: colors.coral,
-    boxShadow: '2px 2px 4px 2px rgba( 0, 0, 0, 0.2 )',
-    height: '60px'
   }
 })
 
-function iconGroup () {
+function topBar (props) {
+  const dispatch = props.dispatch
 
-}
-
-function topBar () {
-  return <div className={css(styles.topBarWrapper)}>
-    <div className={css(styles.topBar)}>
-      <h3>I am the top bar</h3>
+  return <div className='pl3'>
+    <div className='flex'>
+      <div 
+        className='dt pointer'
+        onclick={toggleShowingDrawer}
+      >
+        <div className='h3 dtc v-mid white'>
+          <span className='fa fa-3x fa-bars' />
+        </div>
+      </div>
     </div>
   </div>
+
+  function toggleShowingDrawer () {
+    dispatch({type: 'toggle layout.showingDrawer'})
+  }
 }
 
 function drawer () {
@@ -48,12 +59,19 @@ function drawer () {
   </div>
 }
 
-function navbar () {
-  return <div className={css(styles.navbar)}>
+function navbar (props) {
+  const layoutState = props.state.layout
+
+  const navbarClass = css(
+    styles.navbar,
+    layoutState.showingDrawer && styles.navbarShow
+  )
+
+  return <div className={navbarClass}>
     <div className='absolute'>
       <div className='relative flex'>
-        {drawer()}
-        {topBar()}
+        {drawer(props)}
+        {topBar(props)}
       </div>
     </div>
   </div>

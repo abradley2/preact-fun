@@ -21,7 +21,7 @@ function home (props) {
   const state = props.state
 
   return <div>
-    <Navbar />
+    <Navbar state={props.state} dispatch={props.dispatch} />
     <div className='center measure'>
       <h3>{state.home.message}</h3>
       <input

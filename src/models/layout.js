@@ -2,14 +2,12 @@ const layout = {
   namespace: 'layout',
   init: function () {
     return {
-      showDrawer: false
+      showingDrawer: false
     }
   },
-  drawer: {
+  showingDrawer: {
     toggle: function (state) {
-      return {
-        showDrawer: !state.showDrawer
-      }
+      return !state
     }
   }
 }
