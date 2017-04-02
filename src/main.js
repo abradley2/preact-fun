@@ -6,7 +6,8 @@ const Socrates = require('socrates')
 const Router = require('preact-router')
 
 const models = {
-  layout: require('./models/layout')
+  layout: require('./models/layout'),
+  todos: require('./models/todos')
 }
 
 // require views

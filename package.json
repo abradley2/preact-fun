@@ -28,6 +28,7 @@
     "preact": "^7.2.1",
     "preact-router": "^2.4.1",
     "reselect": "^3.0.0",
+    "shortid": "^2.2.8",
     "socrates": "^4.0.2",
     "treo": "^0.5.1",
     "xhr": "^2.4.0"
