@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   navbar: {
     transition: '1s',
     marginLeft: '-' + drawerWidth,
-    backgroundColor: colors.coral,
+    backgroundColor: colors.red,
     boxShadow: '2px 2px 4px 2px rgba( 0, 0, 0, 0.2 )',
     height: '4rem'
   },
