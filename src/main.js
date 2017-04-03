@@ -58,7 +58,8 @@ Object.keys(models).forEach(function (namespace) {
 
 // have router resolve and start app
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('READY')
+  const el = document.createElement('div')
+  document.body.appendChild(el)
   render(
     <App
       store={store}
@@ -67,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return store(action)
       }}
     />,
-    document.getElementById('app')
+    el
   )
+  console.log('RENDERED')
 })
