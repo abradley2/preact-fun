@@ -3,7 +3,7 @@ const h = require('preact').h
 
 function Button (props) {
   return <button
-    className=''
+    className='button-reset'
     onclick={props.onclick || Function.prototype}
   >
     {props.children}
