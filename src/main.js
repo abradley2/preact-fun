@@ -57,18 +57,13 @@ Object.keys(models).forEach(function (namespace) {
 })
 
 // have router resolve and start app
-document.addEventListener('DOMContentLoaded', function () {
-  const el = document.createElement('div')
-  document.body.appendChild(el)
-  render(
-    <App
-      store={store}
-      dispatch={function (action) {
-        if (typeof action === 'function') return action(store)
-        return store(action)
-      }}
-    />,
-    el
-  )
-  console.log('RENDERED')
-})
+render(
+  <App
+    store={store}
+    dispatch={function (action) {
+      if (typeof action === 'function') return action(store)
+      return store(action)
+    }}
+  />,
+  document.getElementById('app')
+)
