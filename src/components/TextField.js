@@ -12,7 +12,8 @@ const styles = StyleSheet.create({
     borderLeft: 'none',
     borderRight: 'none',
     outline: 'none'
-  }
+  },
+  input: 'transition h2 f3 bb bw1'
 })
 
 function TextField (props) {
@@ -29,11 +30,7 @@ function TextField (props) {
         onfocus={this.setFocus.bind(this, true)}
         onblur={this.setFocus.bind(this, false)}
         placeholder={props.placeholder || ''}
-        className={
-          css(styles.inputReset) +
-          ' transition h2 f3 bb bw1 ' +
-          color
-        }
+        className={css(styles.inputReset, styles.input, color)}
         oninput={props.oninput || Function.prototype}
       />
     </div>

@@ -1,4 +1,5 @@
 /** @jsx h */
+require('./utils/wrap-libs')
 const h = require('preact').h
 const render = require('preact').render
 const Component = require('preact').Component
