@@ -14,8 +14,9 @@ function CreateTodoForm (props) {
       value={state.title}
       oninput={editTitle}
     />
-    <div className='pv2' />
-    <Button>Create!</Button>
+    <div className='mt3 tc'>
+      <Button>Create!</Button>
+    </div>
   </div>
 
   function editTitle (e) {
