@@ -3,15 +3,30 @@ const getId = require('shortid').generate
 const todos = {
   namespace: 'todos',
   init: function () {
-    return []
+    return {
+      list: [],
+      newTodo: {
+        title: '',
+        completed: false
+      }
+    }
   },
-  add: function (state, payload) {
-    payload.id = getId()
-    state.push(payload)
-    return state
+  newTodo: {
+    title: {
+      edit: function (state, payload) {
+        return payload
+      }
+    }
   },
-  remove: function (state, payload) {
+  list: {
+    add: function (state, payload) {
+      payload.id = getId()
+      state.push(payload)
+      return state
+    },
+    remove: function (state, payload) {
 
+    }
   }
 }
 

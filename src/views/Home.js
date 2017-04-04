@@ -14,6 +14,7 @@ const model = {
   },
   message: {
     edit: function (state, payload) {
+      console.log('newState: ', payload)
       return payload
     }
   }

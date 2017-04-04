@@ -24,20 +24,26 @@ function HomeRoute (props) {
 // map routes to the App's render function
 function App (props) {
   Component.call(this, props)
-  this.state = this.props.store()
-
-  this.render = function () {
-    return <Router>
-      <HomeRoute path='/' state={this.props.store()} dispatch={this.props.dispatch} />
-    </Router>
-  }
 }
 
 App.prototype = Object.create(Component.prototype)
 
+App.prototype.render = function () {
+  console.log('render: ', JSON.stringify(this.state.storeState, null, 2))
+  return <Router>
+    <HomeRoute path='/' state={this.state.storeState} dispatch={this.props.dispatch} />
+  </Router>
+}
+
 App.prototype.componentWillMount = function () {
-  this.props.store.subscribe(function (newState) {
-    this.setState(newState)
+  this.state = {
+    storeState: this.props.store()
+  }
+
+  this.props.store.subscribe(function () {
+    this.setState({
+      storeState: this.props.store()
+    })
   }.bind(this))
 }
 

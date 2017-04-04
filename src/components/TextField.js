@@ -18,37 +18,30 @@ const styles = StyleSheet.create({
 
 function TextField (props) {
   Component.call(this, props)
-
-  this.render = function () {
-    const color = this.state.hasFocus
-      ? 'b--red'
-      : 'b--gray'
-
-    return <div>
-      <input
-        type='text'
-        onfocus={this.setFocus.bind(this, true)}
-        onblur={this.setFocus.bind(this, false)}
-        placeholder={props.placeholder || ''}
-        className={css(styles.inputReset, styles.input, color)}
-        oninput={props.oninput || Function.prototype}
-      />
-    </div>
-  }
 }
 
 TextField.prototype = Object.create(Component.prototype)
+
+TextField.prototype.render = function () {
+  const props = this.props
+  const color = this.state.hasFocus
+    ? 'b--red'
+    : 'b--gray'
+
+  return <input
+    type='text'
+    value={this.props.value}
+    onfocus={this.setFocus.bind(this, true)}
+    placeholder={props.placeholder || ''}
+    className={css(styles.inputReset, styles.input, color)}
+    oninput={props.oninput}
+  />
+}
 
 TextField.prototype.setFocus = function (state) {
   this.setState({
     hasFocus: state
   })
-}
-
-TextField.prototype.componentWillMount = function () {
-  this.state = {
-    hasFocus: false
-  }
 }
 
 module.exports = TextField
