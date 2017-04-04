@@ -19,7 +19,6 @@ function CreateTodoForm (props) {
   </div>
 
   function editTitle (e) {
-    console.log(e.target.value)
     dispatch({
       type: 'edit todos.newTodo.title',
       payload: e.target.value
