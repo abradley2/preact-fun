@@ -27,9 +27,9 @@ function App (props) {
 }
 
 App.prototype = Object.create(Component.prototype)
+App.prototype.constructor = App
 
 App.prototype.render = function () {
-  console.log('render: ', JSON.stringify(this.state.storeState, null, 2))
   return <Router>
     <HomeRoute path='/' state={this.state.storeState} dispatch={this.props.dispatch} />
   </Router>
