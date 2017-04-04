@@ -24,6 +24,9 @@ function HomeRoute (props) {
 // map routes to the App's render function
 function App (props) {
   Component.call(this, props)
+  this.state = {
+    storeState: props.store()
+  }
 }
 
 App.prototype = Object.create(Component.prototype)
@@ -36,10 +39,6 @@ App.prototype.render = function () {
 }
 
 App.prototype.componentWillMount = function () {
-  this.state = {
-    storeState: this.props.store()
-  }
-
   this.props.store.subscribe(function () {
     this.setState({
       storeState: this.props.store()
