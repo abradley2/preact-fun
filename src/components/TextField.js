@@ -1,6 +1,5 @@
 /** @jsx h */
 const h = require('preact').h
-const Component = require('preact').Component
 const StyleSheet = require('aphrodite').StyleSheet
 const css = require('aphrodite').css
 
@@ -17,31 +16,13 @@ const styles = StyleSheet.create({
 })
 
 function TextField (props) {
-  Component.call(this, props)
-}
-
-TextField.prototype = Object.create(Component.prototype)
-
-TextField.prototype.render = function () {
-  const props = this.props
-  const color = this.state.hasFocus
-    ? 'b--red'
-    : 'b--gray'
-
   return <input
     type='text'
-    value={this.props.value}
-    onfocus={this.setFocus.bind(this, true)}
+    value={props.value}
     placeholder={props.placeholder || ''}
-    className={css(styles.inputReset, styles.input, color)}
+    className={css(styles.inputReset, styles.input)}
     oninput={props.oninput}
   />
-}
-
-TextField.prototype.setFocus = function (state) {
-  this.setState({
-    hasFocus: state
-  })
 }
 
 module.exports = TextField
