@@ -34,7 +34,7 @@ App.prototype.constructor = App
 
 App.prototype.render = function () {
   return <Router>
-    <HomeRoute path='/' state={this.state.storeState} dispatch={this.props.dispatch} />
+    <HomeRoute path='/preact-fun' state={this.state.storeState} dispatch={this.props.dispatch} />
   </Router>
 }
 
