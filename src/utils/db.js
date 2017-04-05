@@ -1,4 +1,4 @@
-let db
+var db
 
 if (process.env.NODE_ENV !== 'test') {
   const treo = require('treo')

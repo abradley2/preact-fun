@@ -2,7 +2,7 @@
 require('es6-promise').polyfill()
 require('./utils/wrap-libs')
 const h = require('preact').h
-const persist = require('persist')
+const persist = require('./utils/persist')
 const render = require('preact').render
 const Component = require('preact').Component
 const Socrates = require('socrates')

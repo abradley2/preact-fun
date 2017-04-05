@@ -14,8 +14,8 @@
   },
   "browserify": {
     "transform": [
-      "envify",
-      "babelify"
+      "babelify",
+      "envify"
     ]
   },
   "standard": {
