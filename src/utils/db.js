@@ -6,4 +6,4 @@ const schema = treo.schema()
     .addStore('storedState', {key: 'namespace'})
     .addStore('todos', {key: 'id'})
 
-module.exports = treo('db', schema)
+module.exports = process.env.NODE_ENV !== 'test' ? treo('db', schema) : Function.prototype

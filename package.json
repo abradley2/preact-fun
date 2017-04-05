@@ -2,7 +2,7 @@
   "scripts": {
     "build": "NODE_ENV=production browserify ./src/main.js -g uglifyify -o ./public/main.bundle.js",
     "watch": "NODE_ENV=development budo ./src/main.js:main.bundle.js --live --dir ./public -- --debug",
-    "test": "standard --fix && ava",
+    "test": "NODE_ENV=test standard --fix && ava",
     "lint": "standard --fix"
   },
   "ava": {

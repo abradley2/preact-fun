@@ -1,5 +1,6 @@
 /** @jsx h */
 const h = require('preact').h
+const todoActions = require('../actions/todos')
 const TextField = require('./TextField')
 const Button = require('./Button')
 
@@ -26,11 +27,10 @@ function CreateTodoForm (props) {
     })
   }
 
-  function createTodo (e) {
-    dispatch({
-      type: 'add todos.list',
-      payload: state
-    })
+  function createTodo () {
+    todoActions.addTodo({
+      title: state.title
+    }, dispatch)
   }
 }
 
