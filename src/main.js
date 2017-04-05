@@ -1,6 +1,8 @@
 /** @jsx h */
+require('es6-promise').polyfill()
 require('./utils/wrap-libs')
 const h = require('preact').h
+const persist = require('persist')
 const render = require('preact').render
 const Component = require('preact').Component
 const Socrates = require('socrates')
@@ -63,13 +65,21 @@ Object.keys(models).forEach(function (namespace) {
 })
 
 // have router resolve and start app
-render(
-  <App
-    store={store}
-    dispatch={function (action) {
-      if (typeof action === 'function') return action(store)
-      return store(action)
-    }}
-  />,
-  document.getElementById('app')
-)
+const loadApp = process.env.NODE_ENV === 'dev'
+  ? persist.load()
+  : Promise.resolve()
+
+loadApp.then(function () {
+  render(
+    <App
+      store={store}
+      dispatch={function (action) {
+        if (typeof action === 'function') return action(store)
+        const result = store(action)
+        if (process.env.NODE_ENV === 'dev') persist.save(store())
+        return result
+      }}
+    />,
+    document.getElementById('app')
+  )
+})
