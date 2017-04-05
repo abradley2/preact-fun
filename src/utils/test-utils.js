@@ -38,7 +38,7 @@ function find (queries, dom) {
   return selectors.map(s => s.found)
 }
 
-// need to NoOp aprhodite
+// need to NoOp aphrodite in a test environment
 Object.assign(require('aphrodite'), {
   StyleSheet: {create: function () { return {} }},
   css: function () { return '' }

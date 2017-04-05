@@ -14,8 +14,8 @@ function CreateTodoForm (props) {
       value={state.title}
       oninput={editTitle}
     />
-    <div className='mt3 tc'>
-      <Button>Create!</Button>
+    <div className='mt3'>
+      <Button onclick={createTodo}>Create!</Button>
     </div>
   </div>
 
@@ -23,6 +23,13 @@ function CreateTodoForm (props) {
     dispatch({
       type: 'edit todos.newTodo.title',
       payload: e.target.value
+    })
+  }
+
+  function createTodo (e) {
+    dispatch({
+      type: 'add todos.list',
+      payload: state
     })
   }
 }

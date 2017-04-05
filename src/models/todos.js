@@ -1,4 +1,5 @@
 const getId = require('shortid').generate
+const i = require('icepick')
 
 const todos = {
   namespace: 'todos',
@@ -20,9 +21,10 @@ const todos = {
   },
   list: {
     add: function (state, payload) {
-      payload.id = getId()
-      state.push(payload)
-      return state
+      return i.push(state, {
+        title: payload.title,
+        id: getId()
+      })
     },
     remove: function (state, payload) {
 

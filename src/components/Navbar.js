@@ -3,6 +3,7 @@ const h = require('preact').h
 const StyleSheet = require('aphrodite').StyleSheet
 const css = require('aphrodite').css
 const colors = require('../styles/colors')
+const TodoList = require('./TodoList')
 
 const styles = StyleSheet.create({
   transition: {
@@ -60,7 +61,7 @@ function topBar (props) {
 function drawer (props) {
   return <div className={css(styles.drawerWrapper)}>
     <div className={css(styles.drawer)}>
-      <span>I am a drawer</span>
+      <TodoList state={props.state} dispatch={props.dispatch} />
     </div>
   </div>
 }
