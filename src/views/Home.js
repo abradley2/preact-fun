@@ -1,5 +1,7 @@
 /** @jsx h */
 const h = require('preact').h
+const Component = require('preact').Component
+const todoActions = require('../actions/todos')
 const Navbar = require('../components/Navbar')
 const FloatingAction = require('../components/FloatingAction')
 const BottomSheet = require('../components/BottomSheet')
@@ -19,12 +21,19 @@ const model = {
   }
 }
 
-function home (props) {
-  const dispatch = props.dispatch
-  const state = props.state
+function Home (props) {
+  Component.call(this, props)
+}
+
+Home.prototype = Object.create(Component.prototype)
+Home.prototype.constructor = Home
+
+Home.prototype.render = function () {
+  const state = this.props.state
+  const dispatch = this.props.dispatch
 
   return <div>
-    <Navbar state={props.state} dispatch={props.dispatch} />
+    <Navbar state={state} dispatch={dispatch} />
     <div className='relative center measure ph2'>
       <h3>{state.home.message}</h3>
       <input
@@ -45,8 +54,8 @@ function home (props) {
             />
           }
         </div>
-        <BottomSheet state={props.state} dispatch={props.dispatch}>
-          <CreateTodoForm state={props.state} dispatch={props.dispatch} />
+        <BottomSheet state={state} dispatch={dispatch}>
+          <CreateTodoForm state={state} dispatch={dispatch} />
         </BottomSheet>
       </div>
     </div>
@@ -66,7 +75,11 @@ function home (props) {
   }
 }
 
+Home.prototype.componentDidMount = function () {
+  todoActions.getTodos(null, this.props.dispatch)
+}
+
 module.exports = {
-  view: home,
+  view: Home,
   model: model
 }

@@ -20,6 +20,9 @@ const todos = {
     }
   },
   list: {
+    fetch: function (state, payload) {
+      return payload
+    },
     add: function (state, payload) {
       return i.push(state, {
         title: payload.title,
