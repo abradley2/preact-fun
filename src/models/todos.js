@@ -7,8 +7,7 @@ const todos = {
     return {
       list: [],
       newTodo: {
-        title: '',
-        completed: false
+        title: ''
       }
     }
   },
@@ -33,7 +32,8 @@ const todos = {
       return i.push(state, {
         title: payload.title,
         id: getId(),
-        completed: false
+        completed: false,
+        subtacks: []
       })
     },
     remove: function (state, payload) {

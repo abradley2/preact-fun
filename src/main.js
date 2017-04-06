@@ -58,7 +58,11 @@ function initView (view) {
 }
 
 // create the store an initialize the model of each
-const store = Socrates(models)
+const store = Socrates(Object.assign(models), {
+  setState: function (state, payload) {
+    return payload
+  }
+})
 
 Object.keys(models).forEach(function (namespace) {
   store({type: 'init:' + namespace})
