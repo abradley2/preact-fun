@@ -28,9 +28,12 @@ function CreateTodoForm (props) {
   }
 
   function createTodo () {
-    todoActions.addTodo({
+    const newTodo = {
       title: state.title
-    }, dispatch)
+    }
+    todoActions.addTodo(newTodo, dispatch)
+    dispatch({type: 'reset todos.newTodo'})
+    if (props.oncreate) props.oncreate(newTodo)
   }
 }
 

@@ -4,8 +4,10 @@ const h = require('preact').h
 function TodoList (props) {
   const state = props.state.todos.list
 
-  return <div>
-    <ul>{state.map(function (todo) {
+  return <div className='ph2'>
+    <ul
+      className='list pl0'
+    >{state.map(function (todo) {
       return <li key={todo.id}>
         {todo.title}
       </li>

@@ -55,13 +55,23 @@ Home.prototype.render = function () {
           }
         </div>
         <BottomSheet state={state} dispatch={dispatch}>
-          <CreateTodoForm state={state} dispatch={dispatch} />
+          <CreateTodoForm
+            state={state}
+            dispatch={dispatch}
+            oncreate={hideCreate}
+          />
         </BottomSheet>
       </div>
     </div>
   </div>
 
   function showCreate () {
+    dispatch({
+      type: 'toggle layout.showingBottomSheet'
+    })
+  }
+
+  function hideCreate () {
     dispatch({
       type: 'toggle layout.showingBottomSheet'
     })

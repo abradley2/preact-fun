@@ -17,6 +17,12 @@ const todos = {
       edit: function (state, payload) {
         return payload
       }
+    },
+    reset: function () {
+      return {
+        title: '',
+        completed: false
+      }
     }
   },
   list: {
@@ -26,7 +32,8 @@ const todos = {
     add: function (state, payload) {
       return i.push(state, {
         title: payload.title,
-        id: getId()
+        id: getId(),
+        completed: false
       })
     },
     remove: function (state, payload) {

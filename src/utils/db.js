@@ -1,4 +1,4 @@
-var db
+var db = Function.prototype
 
 if (process.env.NODE_ENV !== 'test') {
   const treo = require('treo')
