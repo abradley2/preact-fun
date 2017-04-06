@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
   },
   drawer: {
     position: 'fixed',
+    overflowY: 'scroll',
     zIndex: 1,
     top: '0',
     bottom: '0',

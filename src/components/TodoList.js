@@ -8,7 +8,10 @@ function TodoList (props) {
     <ul
       className='list pl0'
     >{state.map(function (todo) {
-      return <li key={todo.id}>
+      return <li
+        className='pv3 b--black-20 bb f4'
+        key={todo.id}
+      >
         {todo.title}
       </li>
     })}</ul>
