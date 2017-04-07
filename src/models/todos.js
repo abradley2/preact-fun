@@ -29,6 +29,7 @@ const todos = {
       return payload
     },
     add: function (state, payload) {
+      console.log('ADDING TODO')
       return i.push(state, {
         title: payload.title,
         id: getId(),

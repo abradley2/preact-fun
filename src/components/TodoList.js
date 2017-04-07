@@ -6,6 +6,7 @@ function TodoList (props) {
 
   return <div className='ph2'>
     <ul
+      data-role='todo-list'
       className='list pl0'
     >{state.map(function (todo) {
       return <li

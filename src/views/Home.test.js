@@ -17,7 +17,7 @@ test.beforeEach(function (t) {
   }
 })
 
-test('home view', function (t) {
+test('should simply render the main view', function (t) {
   const store = t.context.store
   render(
     h(Home.view, {state: store(), dispatch: store}),
@@ -26,5 +26,30 @@ test('home view', function (t) {
 
   const $ = getSelector(document.body)
 
-  t.pass($)
+  t.truthy($('body').innerHTML)
+
+  t.pass()
+})
+
+test('should be able to add a todo', function (t) {
+  const store = t.context.store
+
+  store({
+    type: 'add todos.list',
+    payload: {
+      title: 'New Todo'
+    }
+  })
+
+  render(
+    h(Home.view, {state: store(), dispatch: store})
+  )
+
+  const $ = getSelector(document.body)
+
+  t.true(
+    $('ul[data-role="todo-list"]').children.length === 1
+  )
+
+  t.pass()
 })

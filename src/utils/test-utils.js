@@ -4,7 +4,6 @@ const cheerio = require('cheerio')
 
 function getSelector (element) {
   const html = serialize(element)
-  console.log('html = ', html)
   return cheerio.load(html)
 }
 
