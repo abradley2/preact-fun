@@ -52,7 +52,8 @@ App.prototype.componentWillMount = function () {
 // returns just the "render" function of the view
 function initView (view) {
   if (view.model) {
-    models[view.model.namespace] = view.model
+    const ns = view.model.init().namespace
+    models[ns] = view.model
   }
   return view.view
 }
@@ -69,19 +70,17 @@ Object.keys(models).forEach(function (namespace) {
 })
 
 // have router resolve and start app
-const loadApp = process.env.NODE_ENV === 'dev'
-  ? persist.load()
-  : Promise.resolve()
+const loadApp = process.env.NODE_ENV === 'development'
+  ? persist.load(store)
+  : Promise.resolve(store)
 
-loadApp.then(function () {
+loadApp.then(function (appStore) {
   render(
     <App
-      store={store}
+      store={appStore}
       dispatch={function (action) {
-        if (typeof action === 'function') return action(store)
-        const result = store(action)
-        if (process.env.NODE_ENV === 'dev') persist.save(store())
-        return result
+        if (typeof action === 'function') return action(appStore)
+        appStore(action)
       }}
     />,
     document.getElementById('app')

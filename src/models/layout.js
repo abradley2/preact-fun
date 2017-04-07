@@ -1,7 +1,7 @@
 const layout = {
-  namespace: 'layout',
   init: function () {
     return {
+      namespace: 'layout',
       showingDrawer: false,
       showingBottomSheet: true
     }

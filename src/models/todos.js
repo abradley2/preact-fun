@@ -2,9 +2,9 @@ const getId = require('shortid').generate
 const i = require('icepick')
 
 const todos = {
-  namespace: 'todos',
   init: function () {
     return {
+      namespace: 'todos',
       list: [],
       newTodo: {
         title: ''

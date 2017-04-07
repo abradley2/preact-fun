@@ -8,9 +8,9 @@ const BottomSheet = require('../components/BottomSheet')
 const CreateTodoForm = require('../components/CreateTodoForm')
 
 const model = {
-  namespace: 'home',
   init: function () {
     return {
+      namespace: 'home',
       message: 'Hello World!'
     }
   },
