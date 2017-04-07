@@ -1,41 +1,11 @@
-const css = require('cssauron')({
-  id: 'id',
-  'class': 'className',
-  parent: 'parentNode',
-  tag: function (node) { return (node.tagName || node.nodeName || '').toLowerCase() },
-  contents: function (node) { return node.innerText || node.textContent || '' },
-  children: function (node) {
-    if (node.children) {
-      return node.children
-    }
+require('undom/register')
+require('./test-mocks')
+const cheerio = require('cheerio')
 
-    var out = []
-    for (var i = 0, len = node.childNodes.length; i < len; ++i) {
-      if (node.childNodes[i].tagName) out.push(node.childNodes[i])
-    }
-    return out
-  },
-  attr: function (node, attr) { return node.getAttribute(attr) }
-})
-const walk = require('dom-walk')
-
-function getSelector (query) {
-  const selector = css(query)
-  return function check (element) {
-    if (check.found) return
-    check.found = selector(element)
-  }
-}
-
-function find (queries, dom) {
-  const selectors = (Array.isArray(queries) ? queries : [queries]).map(getSelector)
-  walk(dom, function (current) {
-    for (var i = 0; i < selectors.length; i++) {
-      if (current.getAttribute) selectors[i](current)
-    }
-  })
-
-  return selectors.map(s => s.found)
+function getSelector (element) {
+  const html = serialize(element)
+  console.log('html = ', html)
+  return cheerio.load(html)
 }
 
 // need to NoOp aphrodite in a test environment
@@ -44,7 +14,23 @@ Object.assign(require('aphrodite'), {
   css: function () { return '' }
 })
 
+function serialize (el) {
+  if (el.nodeType === 3) return el.textContent
+  var name = String(el.nodeName).toLowerCase()
+  var str = '<' + name
+  var c
+  var i
+  for (i = 0; i < el.attributes.length; i++) {
+    str += ' ' + el.attributes[i].name + '="' + el.attributes[i].value + '"'
+  }
+  str += '>'
+  for (i = 0; i < el.childNodes.length; i++) {
+    c = serialize(el.childNodes[i])
+    if (c) str += '\n\t' + c.replace(/\n/g, '\n\t')
+  }
+  return str + (c ? '\n' : '') + '</' + name + '>'
+}
+
 module.exports = {
-  getSelector,
-  find
+  getSelector
 }

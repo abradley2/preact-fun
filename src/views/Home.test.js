@@ -1,16 +1,20 @@
 const test = require('ava').test
 const {h, render} = require('preact')
-const {find} = require('../utils/test-utils')
+const {getSelector} = require('../utils/test-utils')
 const Home = require('./Home')
 
 // initialize a fresh store before each test
 test.beforeEach(function (t) {
-  t.context.store = require('socrates')({
+  // included any models used in the view
+  const models = {
     layout: require('../models/layout'),
+    todos: require('../models/todos'),
     home: Home.model
-  })
-  t.context.store({type: 'init:home'})
-  t.context.store({type: 'init:layout'})
+  }
+  t.context.store = require('socrates')(models)
+  for (var ns in models) {
+    t.context.store({type: 'init ' + ns})
+  }
 })
 
 test('home view', function (t) {
@@ -20,7 +24,7 @@ test('home view', function (t) {
     document.body
   )
 
-  const results = find('input', document.body)
+  const $ = getSelector(document.body)
 
-  t.pass(results[0])
+  t.pass($)
 })

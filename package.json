@@ -2,7 +2,7 @@
   "scripts": {
     "build": "NODE_ENV=production browserify ./src/main.js -g uglifyify -o ./public/main.bundle.js",
     "watch": "NODE_ENV=development budo ./src/main.js:main.bundle.js --live --dir ./public -- --debug",
-    "test": "NODE_ENV=test standard --fix && ava",
+    "test": "standard --fix && NODE_ENV=test ava",
     "lint": "standard --fix"
   },
   "ava": {
@@ -45,8 +45,7 @@
     "babelify": "^7.3.0",
     "browserify": "^14.1.0",
     "budo": "^9.4.7",
-    "cssauron": "^1.4.0",
-    "dom-walk": "^0.1.1",
+    "cheerio": "^0.22.0",
     "envify": "^4.0.0",
     "standard": "^9.0.2",
     "uglifyify": "^3.0.4",
